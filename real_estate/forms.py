@@ -13,7 +13,7 @@ class ListingForm(FlaskForm):
     bathrooms = StringField('Number of Bathrooms (in written form)', validators=[DataRequired()])
     zipcode = StringField('Zipcode', validators=[DataRequired()])
     office = StringField('Office', validators=[DataRequired()])
-    sold = StringField('Sold', validators=[DataRequired()])
+    #sold = StringField('Sold', validators=[DataRequired()])
     agent_id = StringField('Agent ID', validators=[DataRequired()])
     submit = SubmitField('Create New Listing')
 

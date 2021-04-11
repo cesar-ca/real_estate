@@ -18,7 +18,7 @@ class Listing(db.Model):
     bedrooms = db.Column(db.String(100), nullable=False)
     bathrooms = db.Column(db.String(100), nullable=False)
     zipcode = db.Column(db.String(100), nullable=False)
-    sold = db.Column(db.String(100), nullable=False)
+    sold = db.Column(db.String(100), nullable=False, default="No")
     office = db.Column(db.String(100), nullable=False)
     agent_id = db.Column(db.Integer, db.ForeignKey('agent.id'), nullable=False)
 
