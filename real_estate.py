@@ -23,7 +23,7 @@ buyer details, sale price, date of sale, the selling estate agent.
 The original listing must be marked as sold.
 '''
 
-listing = [
+listings = [
     {
         'seller': 'Emanuel Castro',
         'bedrooms': 'Two',
@@ -41,7 +41,7 @@ listing = [
         'price': '100500',
         'zipcode': '94108',
         'date': 'November 30, 2019',
-        'agent': 'Bucky Barnes',
+        'agent': 'Sam Wilson',
         'office': 'Tenderloin'
     },
     
@@ -52,11 +52,11 @@ listing = [
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', listing=listing)
+    return render_template('home.html', listings=listings)
 
 @app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 # Conditional given that __name__ is same as __main__ in this app
 if __name__ == '__main__':

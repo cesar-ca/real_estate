@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        {% if title %}
         <title>
-
+            Real Estate | {{ title }}
         </title>
+        {% else %}
+        <title>
+            Real Estate
+        </title>
+        {% endif %}
     </head>
     <body>
         <h1>About Page</h1>
