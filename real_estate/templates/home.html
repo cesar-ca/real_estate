@@ -1,11 +1,19 @@
 {% extends "layout.html" %}
 
 {% block navigation%}
-<a class="nav-item nav-link" href="{{ url_for('about') }}" style="color:blue">About</a>
+<a class="nav-item nav-link" href="{{ url_for('registered_agents') }}" style="color:blue">Registered Agents</a>
 <a class="nav-item nav-link" href="{{ url_for('new_listing') }}" style="color:blue">Create Listing</a>
 {% endblock navigation %}
 
 {% block content %}
+<br>
+<br>
+<h2>Welcome to the Real Estate Head Office Platform</h2>
+<br>
+<h3>If you are an agent at one of our offices, register 
+    <a href="{{ url_for('agent_register') }}" style="color:blue">here</a></h3>
+<br>
+<br>
 
     {% for listing in listings %}
         <h1>A new house has been listed!</h1>
@@ -13,8 +21,8 @@
         <p>The house has: {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
         <p>The current price is ${{ listing.price }}</p>
         <p>The zip code is {{ listing.zipcode }}</p>
-        <p>This house was listed on {{ listing.date }}</p>
-        <p>Listed by agent {{ listing.agent }} from The {{ listing.office }} Real Estate Office</p>
+        <p>This house was listed on {{ listing.date.strftime('%Y-%m-%d') }}</p>
+        <p>Listed by agent {{ listing.agent.name }} from The {{ listing.office }} Real Estate Office</p>
 
     {% endfor %}
 {% endblock content %}

@@ -15,3 +15,7 @@ class ListingForm(FlaskForm):
     office = StringField('Office', validators=[DataRequired()])
     agent_id = StringField('Agent ID', validators=[DataRequired()])
     submit = SubmitField('Create New Listing')
+
+class AgentForm(FlaskForm):
+    name = StringField('Write your name below', validators=[DataRequired()])
+    submit = SubmitField('Register as Agent')
