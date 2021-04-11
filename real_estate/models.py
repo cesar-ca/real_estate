@@ -1,5 +1,5 @@
 from datetime import datetime
-from __main__ import db
+from real_estate import db
 
 class Agent(db.Model):
     id = db.Column(db.Integer, primary_key=True)

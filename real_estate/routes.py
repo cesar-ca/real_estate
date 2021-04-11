@@ -1,12 +1,6 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-db = SQLAlchemy(app)
-
-from models import Agent, Listing
-
+from flask import render_template, url_for, flash, redirect
+from real_estate import app
+from real_estate.models import Agent, Listing
 
 
 listings = [
@@ -34,7 +28,6 @@ listings = [
 ]
 
 
-
 @app.route("/")
 @app.route("/home")
 def home():
@@ -43,7 +36,3 @@ def home():
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
-
-# Conditional given that __name__ is same as __main__ in this app
-if __name__ == '__main__':
-    app.run(debug=True)
