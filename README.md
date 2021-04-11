@@ -1,4 +1,4 @@
-Steps to Run CS162 - DB Application
+Steps to Run CS162 - DB Application - INITIAL SETUP
 
 Go to the github repo, you will find it here: github.com/cesar-ca/real_estate
 
@@ -33,16 +33,20 @@ git pull
 
 Virtual environment is a key component in ensuring that the application is configured in the right environment
 
-
+To make sure you have the most basic requirements, run
 ```
 python3 --version
 ```
-
+and 
+```
+pip3 --version
+```
+* You should be able to see your version pop up
 
 
 ##### Installation
 To install virtualenv via pip run:
-```bash
+```
 $ pip3 install virtualenv
 ```
 
@@ -52,89 +56,87 @@ On Windows:
 python -m pip install virtualenv
 ```
 
-
-
-On your terminal
-
-1. Navigate to the directory where you have your copy of this project.
-
-2. Before you run the application, set up an environment variable to the file that you want to be the Flask application.
-
-For example, (Mac/Linux)
-
+##### Usage
+Creation of virtualenv:
 ```
-$ export FLASK_APP=real_estate.py
+virtualenv -p python3 venv
 ```
 
-(Windows)
-
+If the above code does not work, you could also do
 ```
-$ set FLASK_APP=real_estate.py
-```
-
-3. With the environment variable set, run the application with the following
-
-```
-$ flask run
+python3 -m venv venv
 ```
 
-4. You should be able to see the application by going to your localhost
-
-These will allow you to see the app as much as required if you do not wish to contribute.
-
-### If you wish to contribute and wish to see the server show changes without the need to restart the application, you can run the application in DEBUG MODE.
-
-After step 2 above, do the following 
-
-2.a. On your terminal
-
-(Mac/Linux)
-
+To activate the virtualenv:
 ```
-$ export FLASK_DEBUG=1
+source venv/bin/activate
 ```
 
-(Windows)
+Install dependencies in virtual environment:
 
 ```
-$ set FLASK_DEBUG=1
+pip3 install -r requirements.txt
 ```
 
-Then you can continue to step 3
-
-
-### If you do not wish to set up envrironment variables 
-
-You can run the module directly (Disclaimer, the Flask documentation uses the flask run command, so it would be recommended to follow it)
+Then, run the application 
 
 ```
-$ python3 real_estate.py
+python3 run.py
 ```
 
+YOU SHOULD BE ABLE TO HAVE EVERYTHING REQUIRED NOW
 
-*** Instead of relying on dummy data, we will create a database for the real estate listings. We will work with SQLAlchemy (very popular Object Relational Mapper)
+You can take a look at the Real Estate Head Office in your localhost
 
+This is a database system for a large franchised real estate company. The company has many offices located all over the country (and the world). Each office is responsible for selling houses in a particular area. However an estate agent can be associated with one or more offices. (An agent is associated only with 1 id).
 
-### The Models 
+### Insertion of data
 
-The models contained here represent the structure of the database
+You can use the UI to insert data, for example you can list a house for sale (provided you are an agent with an ID)
 
-To create the database:
+When you list a house for sale (navigate to the top right corner where it says "Create Listing") the following happens:
 
-- Open the command line (terminal) and run
+All the relevant details of that house is captured
+seller details
+\# of bedrooms 
+\# of bathrooms
+listing price 
+zip code
+date of listing
+the listing estate agent
+the office
 
-```
-$ python3
-```
+Once all of that is captured, you are redirected to the home page where you can see the stream of house listings
 
-Within the python repl run
+A listing agent can also be the selling agent, but it is not required. An sale agent can "Check out the listing" and "Mark as sold"
 
-```
->>> from real_estate import db
-```
+Whene a house is sold (by a sale agent) the following happens:
 
-then create the database with
+A summary table "Summary of all sale prices" is updated.
 
-```
->>> db.create_all()
-```
+All details related to the sale are captured
+buyer details
+sale price
+date of sale
+the selling estate agent
+
+The original listing is marked as sold
+
+Testing:
+
+To test my UI, I created fictitious data (that can be accessed once you get your copy of this repo) to ensure that the DB application runs correctly.
+
+Submission:
+
+For this assignment I used SQLAlchemy and wrote python code. 
+
+My primary submission is this README.md file followed by the rest of my code. 
+Secondary submission is a zip file containing all the code. (this repo)
+
+I believe I have exceeded the requirements of this assignment by creating a rough UI where it is not necessary to write SQL queries, but rather just use the interface for the needed features (listing, selling, etc.)
+
+However, if desired you can also use a python3 repl to run the code and print the results of SQL queries. 
+
+Execution (Python):
+
+In this README.md file I have included a series of commands to execute all the relevant parts of my code
