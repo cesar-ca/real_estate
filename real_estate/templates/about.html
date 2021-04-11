@@ -9,7 +9,7 @@
     <h1>About Page</h1>
     <p>
         seller = db.Column(db.String(100), nullable=False)<br />
-        #price = StringField('Price', validators=[DataRequired()])<br />
+        price = StringField('Price', validators=[DataRequired()])<br />
         date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)<br />
         bedrooms = db.Column(db.String(100), nullable=False)<br />
         bathrooms = db.Column(db.String(100), nullable=False)<br />
