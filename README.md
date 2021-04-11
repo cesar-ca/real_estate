@@ -1,4 +1,58 @@
-Steps 
+Steps to Run CS162 - DB Application
+
+Go to the github repo, you will find it here: github.com/cesar-ca/real_estate
+
+Open the command line (terminal)
+
+
+1. Make sure you have git installed on your device, run the following command on the terminal:
+
+```
+git --version
+```
+
+2. Clone the repo to a "local" directory (on your computer),
+
+```
+git clone https://github.com/cesar-ca/real_estate
+```
+
+then change into the directory
+
+```
+cd real_estate
+```
+
+3. To make sure everything is up to date on your end, run
+
+```
+git pull
+```
+
+## Run Virtual Environment
+
+Virtual environment is a key component in ensuring that the application is configured in the right environment
+
+
+```
+python3 --version
+```
+
+
+
+##### Installation
+To install virtualenv via pip run:
+```bash
+$ pip3 install virtualenv
+```
+
+On Windows:
+
+```
+python -m pip install virtualenv
+```
+
+
 
 On your terminal
 
