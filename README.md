@@ -58,3 +58,4 @@ $ python3 real_estate.py
 ```
 
 
+*** Instead of relying on dummy data, we will create a database for the real estate listings. We will work with SQLAlchemy (very popular Object Relational Mapper)

@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 '''
@@ -8,7 +9,8 @@ Whenever a house is listed then the following things need to happen:
 
 All the relevant details of that house need to be captured, ie. 
 at least: seller details, # of bedrooms, # of bathrooms, listing price, 
-zip code, date of listing, the listing estate agent, and the appropriate office.
+zip code, date of listing, the listing estate agent, 
+and the appropriate office.
 Whenever a house is sold then the following things need to happen:
 
 The estate agent commission needs to be calculated. This happens on a sliding scale:
@@ -22,6 +24,8 @@ All appropriate details related to the sale must be captured, ie. at least:
 buyer details, sale price, date of sale, the selling estate agent.
 The original listing must be marked as sold.
 '''
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 listings = [
     {
@@ -42,7 +46,7 @@ listings = [
         'zipcode': '94108',
         'date': 'November 30, 2019',
         'agent': 'Sam Wilson',
-        'office': 'Tenderloin'
+        'office': 'Chinatown'
     },
     
 ]
