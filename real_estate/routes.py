@@ -10,6 +10,11 @@ def home():
     listings = Listing.query.all()
     return render_template('home.html', listings=listings)
 
+@app.route("/summary")
+def summary():
+    listings = Listing.query.all()
+    return render_template('summary.html', listings=listings)
+
 @app.route("/registered_agents")
 def registered_agents():
     agents = Agent.query.all()

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block navigation%}
+<a class="nav-item nav-link" href="{{ url_for('registered_agents') }}" style="color:blue">Registered Agents</a>
+<a class="nav-item nav-link" href="{{ url_for('new_listing') }}" style="color:blue">Create Listing</a>
+{% endblock navigation %}
+
+{% block content %}
+<br>
+<br>
+<h2><a href="{{ url_for('home') }}" style="color:blue">Welcome to the Real Estate Head Office Platform</a></h2>
+<br>
+
+<h3>Here you will find a summary table containing the sum of all sale prices.</h3>
+<br>
+<br>
+
+
+    <table style="width:100%; border: 1px solid black">
+        <tr>
+          <th style="text-align: center;border: 1px solid black";>Sale Price</th>
+        </tr>
+        {% for n in range(listings| length) %}
+        <tr>
+          <td style="text-align: center;border: 1px solid black";>+ ${{ listings[n] }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td style="text-align: center;border: 1px solid black";>= $ - - - - -</td>
+          </tr>
+      </table>
+      
+
+{% endblock content %}

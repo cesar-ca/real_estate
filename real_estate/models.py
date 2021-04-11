@@ -38,4 +38,4 @@ class Listing(db.Model):
     #saleagent_id = db.Column(db.Integer, db.ForeignKey('saleagent.id'), nullable=True)
 
     def __repr__(self):
-        return f"Listing('{self.seller}', '{self.date}')"
+        return f"{self.saleprice}"
