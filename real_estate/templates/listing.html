@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block navigation%}
+<a class="nav-item nav-link" href="{{ url_for('registered_agents') }}" style="color:blue">Registered Agents</a>
+<a class="nav-item nav-link" href="{{ url_for('new_listing') }}" style="color:blue">Create Listing</a>
+{% endblock navigation %}
+
+{% block content %}
+<br>
+<br>
+<h2>Welcome to the Real Estate Head Office Platform</h2>
+<br>
+<br>
+    <h6>If you are the agent that listed this house, you can mark it as sold</h6>
+    <br>
+    <h7>
+        <a href="{{ url_for('home') }}" style="color:blue">Mark as Sold</a>
+    </h7>
+    <br>
+    <br>
+    <br>
+    <p>Seller Name: {{ listing.seller }}</p>
+    <p>The house has: {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
+    <p>The current price is ${{ listing.price }}</p>
+    <p>The zip code is {{ listing.zipcode }}</p>
+    <p>Has the house been sold already: {{ listing.sold }}</p>
+    <p>This house was listed on {{ listing.date.strftime('%Y-%m-%d') }}</p>
+    <p>Listed by agent {{ listing.agent.name }} from The {{ listing.office }} Real Estate Office</p>
+    <a href="{{ url_for('home') }}" style="color:blue">See More Listings</a>
+    <br>
+    <br>
+
+
+{% endblock content %}

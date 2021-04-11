@@ -16,13 +16,16 @@
 <br>
 
     {% for listing in listings %}
-        <h1>A new house has been listed!</h1>
+        <h4>A new house has been listed at {{ listing.date.strftime('%I:%M:%S %p') }}!</h4>
         <p>Seller Name: {{ listing.seller }}</p>
-        <p>The house has: {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
+        <p>The house has {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
         <p>The current price is ${{ listing.price }}</p>
         <p>The zip code is {{ listing.zipcode }}</p>
+        <p>Has the house been sold already: {{ listing.sold }}</p>
         <p>This house was listed on {{ listing.date.strftime('%Y-%m-%d') }}</p>
         <p>Listed by agent {{ listing.agent.name }} from The {{ listing.office }} Real Estate Office</p>
-
+        <h4><a href="{{ url_for('listing', listing_id=listing.id) }}">Check out this listing by agent {{ listing.agent.name }}</a></h4>
+        <br>
+        <br>
     {% endfor %}
 {% endblock content %}
