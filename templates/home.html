@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% if title %}
-        <title>
-            Real Estate | {{ title }}
-        </title>
-        {% else %}
-        <title>
-            Real Estate
-        </title>
-        {% endif %}
-    </head>
-    <body>
-        {% for listing in listings %}
-            <h1>{{ listing.office }}</h1>
-            <p>By {{ listing.agent }} on {{ listing.date }}</p>
-            <p>{{ listing.bathrooms }}</p>
+{% extends "layout.html" %}
+{% block content %}
 
-        {% endfor %}
-    </body>
-</html>
+    {% for listing in listings %}
+        <h1>{{ listing.office }}</h1>
+        <p>By {{ listing.agent }} on {{ listing.date }}</p>
+        <p>{{ listing.bathrooms }}</p>
+
+    {% endfor %}
+{% endblock content %}
