@@ -8,7 +8,7 @@ from real_estate.models import Agent
 
 class ListingForm(FlaskForm):
     seller = StringField('Name of Seller', validators=[DataRequired()])
-    #price = StringField('Price', validators=[DataRequired()])
+    price = StringField('Price', validators=[DataRequired()])
     bedrooms = StringField('Number of Bedrooms (in written form)', validators=[DataRequired()])
     bathrooms = StringField('Number of Bathrooms (in written form)', validators=[DataRequired()])
     zipcode = StringField('Zipcode', validators=[DataRequired()])
