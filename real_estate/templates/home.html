@@ -14,7 +14,6 @@
     <a href="{{ url_for('agent_register') }}" style="color:blue">here</a></h3>
 <br>
 <br>
-<br>
 
     {% for listing in listings %}
         <h4>A new house has been listed at {{ listing.date.strftime('%I:%M:%S %p') }}!</h4>
