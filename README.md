@@ -59,3 +59,28 @@ $ python3 real_estate.py
 
 
 *** Instead of relying on dummy data, we will create a database for the real estate listings. We will work with SQLAlchemy (very popular Object Relational Mapper)
+
+
+### The Models 
+
+The models contained here represent the structure of the database
+
+To create the database:
+
+- Open the command line (terminal) and run
+
+```
+$ python3
+```
+
+Within the python repl run
+
+```
+>>> from real_estate import db
+```
+
+then create the database with
+
+```
+>>> db.create_all()
+```
