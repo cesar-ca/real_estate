@@ -13,7 +13,7 @@ class Agent(db.Model):
 class Listing(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     seller = db.Column(db.String(100), nullable=False)
-    #price = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.String(100), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     bedrooms = db.Column(db.String(100), nullable=False)
     bathrooms = db.Column(db.String(100), nullable=False)
