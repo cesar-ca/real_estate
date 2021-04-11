@@ -8,9 +8,9 @@
 {% block content %}
 <br>
 <br>
-<h2>Welcome to the Real Estate Head Office Platform</h2>
+<h2><a href="{{ url_for('home') }}" style="color:blue">Welcome to the Real Estate Head Office Platform</a></h2>
 <br>
-<h3>If you are an agent at one of our offices, register 
+<h3>If you are an agent, register 
     <a href="{{ url_for('agent_register') }}" style="color:blue">here</a></h3>
 <br>
 <br>
@@ -21,9 +21,14 @@
         <p>The house has {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
         <p>The current price is ${{ listing.price }}</p>
         <p>The zip code is {{ listing.zipcode }}</p>
-        <p>Has the house been sold already: {{ listing.sold }}</p>
+        {% if listing.sold == "Yes" %}
+        <p style="color: red;">Has the house been sold already: {{ listing.sold }}</p>
+        <p>Sold by agent {{ listing.agent.name }} through The {{ listing.office }} Real Estate Office</p>
+        {% else %}
+        <p style="color: green;">Has the house been sold already: {{ listing.sold }}</p>
+        <p>Listed by agent {{ listing.agent.name }} through The {{ listing.office }} Real Estate Office</p>
+        {% endif %}
         <p>This house was listed on {{ listing.date.strftime('%Y-%m-%d') }}</p>
-        <p>Listed by agent {{ listing.agent.name }} from The {{ listing.office }} Real Estate Office</p>
         <h4><a href="{{ url_for('listing', listing_id=listing.id) }}">Check out this listing by agent {{ listing.agent.name }}</a></h4>
         <br>
         <br>

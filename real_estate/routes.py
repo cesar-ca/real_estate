@@ -15,6 +15,13 @@ def registered_agents():
     agents = Agent.query.all()
     return render_template('registered_agents.html', title='Registered Agents', agents=agents)
 
+'''
+@app.route("/registered_sale_agents")
+def registered_sale_agents():
+    agents = SaleAgent.query.all()
+    return render_template('registered_sale_agents.html', title='Registered Sale Agents', agents=agents)
+'''
+
 @app.route("/listing/new", methods=['GET', 'POST'])
 def new_listing():
     form = ListingForm()
@@ -42,6 +49,11 @@ def sold_listing(listing_id):
     form = SoldForm()
     if form.validate_on_submit():
         listing.sold = form.sold.data
+        listing.buyer = form.buyer.data
+        listing.saleprice = form.saleprice.data
+        #listing.saledate = form.saledate.data
+        listing.saleoffice = form.saleoffice.data
+        listing.agent_id = form.agent_id.data
         #listing.price = form.price.data
         #listing.bathrooms = form.bathrooms.data
         #listing.bedrooms = form.bedrooms.data

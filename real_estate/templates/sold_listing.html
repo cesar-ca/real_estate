@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block navigation%}
+<a class="nav-item nav-link" href="{{ url_for('registered_agents') }}" style="color:blue">Registered Agents</a>
+<a class="nav-item nav-link" href="{{ url_for('new_listing') }}" style="color:blue">Create Listing</a>
+{% endblock navigation %}
+
+{% block content %}
+<br>
+<br>
+<h2><a href="{{ url_for('home') }}" style="color:blue">Welcome to the Real Estate Head Office Platform</a></h2>
+
+<br>
+<br>
+    <h6>If you are the sale agent, you can mark it as sold (you will need your agent id)</h6>
+    <br>
+    <h7>
+        <a href="{{ url_for('home') }}" style="color:blue">Mark as Sold</a>
+    </h7>
+    <br>
+    <br>
+    <br>
+    <p>Seller Name: {{ listing.seller }}</p>
+    <p>The house has: {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
+    <p>The listing price: ${{ listing.price }}</p>
+    <p>The zip code: {{ listing.zipcode }}</p>
+    <p>Has the house been sold already: {{ listing.sold }}</p>
+    <p>This house was listed on {{ listing.date.strftime('%Y-%m-%d') }}</p>
+    <h4>The house has been bought</h4>
+    <p>Buyer's Name: {{ listing.buyer }}</p>
+    <p>The price at sale was ${{ listing.saleprice }}</p>
+    <p>The date of sale was {{ listing.saledate.strftime('%Y-%m-%d') }}</p>
+    <p>The listing was sold by agent {{ listing.agent.name }} through The {{ listing.saleoffice }} Real Estate Office</p>
+    <a href="{{ url_for('home') }}" style="color:blue">See More Listings</a>
+    <br>
+    <br>
+
+
+{% endblock content %}

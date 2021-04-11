@@ -8,27 +8,44 @@
 {% block content %}
 <br>
 <br>
-<h2>Welcome to the Real Estate Head Office Platform</h2>
+<h2><a href="{{ url_for('home') }}" style="color:blue">Welcome to the Real Estate Head Office Platform</a></h2>
+
 <br>
 <br>
-    <h6>If you are the agent that listed this house, you can mark it as sold</h6>
+    
+    {% if listing.sold == "Yes" %}
+    <p>Seller Name: {{ listing.seller }}</p>
+    <p>This house has: {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
+    <p>The listing price: ${{ listing.price }}</p>
+    <p>The zip code: {{ listing.zipcode }}</p>
+    <p>Has the house been sold already: {{ listing.sold }}</p>
+    <p>This house was listed on {{ listing.date.strftime('%Y-%m-%d') }}</p>
+    <h3 style="color: red;">This house has been bought</h3>
+    <p>Buyer's Name: {{ listing.buyer }}</p>
+    <p>The price at sale was ${{ listing.saleprice }}</p>
+    <p>The date of sale was {{ listing.saledate.strftime('%Y-%m-%d') }}</p>
+    <p>The listing was sold by agent {{ listing.agent.name }} through The {{ listing.saleoffice }} Real Estate Office</p>
+    <br>
+    <br>
+    <a href="{{ url_for('home') }}" style="color:blue">See More Listings</a>
+    {% else %}
+    <h6>If you are the sale agent, you can mark it as sold (you will need your agent id)</h6>
     <br>
     <h7>
-        <a href="{{ url_for('home') }}" style="color:blue">Mark as Sold</a>
+        <a href="{{ url_for('sold_listing', listing_id=listing.id) }}" style="color:blue">Mark as Sold</a>
     </h7>
     <br>
     <br>
     <br>
     <p>Seller Name: {{ listing.seller }}</p>
     <p>The house has: {{ listing.bedrooms }} bedrooms and {{ listing.bathrooms }} bathrooms</p>
-    <p>The current price is ${{ listing.price }}</p>
-    <p>The zip code is {{ listing.zipcode }}</p>
+    <p>The listing price: ${{ listing.price }}</p>
+    <p>The zip code: {{ listing.zipcode }}</p>
     <p>Has the house been sold already: {{ listing.sold }}</p>
     <p>This house was listed on {{ listing.date.strftime('%Y-%m-%d') }}</p>
-    <p>Listed by agent {{ listing.agent.name }} from The {{ listing.office }} Real Estate Office</p>
+    <br>
+    <br>
     <a href="{{ url_for('home') }}" style="color:blue">See More Listings</a>
-    <br>
-    <br>
-
+    {% endif %}
 
 {% endblock content %}

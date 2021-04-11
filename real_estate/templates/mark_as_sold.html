@@ -24,7 +24,58 @@
                     {{ form.sold(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
-            
+            <div class="form-group">
+                {{ form.buyer.label(class="form-control-label") }}
+                {% if form.buyer.errors %}
+                    {{ form.buyer(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.buyer.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.buyer(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.saleprice.label(class="form-control-label") }}
+                {% if form.saleprice.errors %}
+                    {{ form.saleprice(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.saleprice.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.saleprice(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.saleoffice.label(class="form-control-label") }}
+                {% if form.saleoffice.errors %}
+                    {{ form.saleoffice(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.saleoffice.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.saleoffice(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.agent_id.label(class="form-control-label") }}
+                {% if form.agent_id.errors %}
+                    {{ form.agent_id(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.agent_id.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.agent_id(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
         </fieldset>
         <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}

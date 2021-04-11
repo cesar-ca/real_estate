@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block navigation%}
+<a class="nav-item nav-link" href="{{ url_for('home') }}" style="color:blue">Home</a>
+<a class="nav-item nav-link" href="{{ url_for('new_listing') }}" style="color:blue">Create Listing</a>
+{% endblock navigation %}
+
+{% block content %}
+    <h1>Registered Sale Agents</h1>
+    
+    {% for agent in sale_agents %}
+
+    <h4>Thanks for registering as a sale agent</h4>
+    <h6>You have to use your sale agent ID when marking listings as sold</h6>
+    <p>Your name: {{ sale_agent.name }}</p>
+    <p>Your agent id: {{ sale_agent.id }}</p>
+
+    {% endfor %}
+
+
+{% endblock content %}

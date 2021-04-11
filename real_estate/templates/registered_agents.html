@@ -7,7 +7,10 @@
 
 {% block content %}
     <h1>Registered Agents</h1>
-    
+    <br>
+    <br>
+
+    <h4>Make sure to check your agent ID before you create a listing</h4>
     {% for agent in agents %}
 
     <h4>Thanks for registering as an agent</h4>
@@ -16,6 +19,11 @@
     <p>Your agent id: {{ agent.id }}</p>
 
     {% endfor %}
+    <br>
+    <a class="nav-item nav-link" href="{{ url_for('new_listing') }}" style="color:blue">Create Listing</a>
+    <br>
+    <a class="nav-item nav-link" href="{{ url_for('home') }}" style="color:blue">Go Back Home</a>
+    
 
 
 {% endblock content %}
