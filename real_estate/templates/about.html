@@ -1,4 +1,19 @@
 {% extends "layout.html" %}
+
+{% block navigation%}
+<a class="nav-item nav-link" href="{{ url_for('home') }}" style="color:blue">Home</a>
+<a class="nav-item nav-link" href="{{ url_for('new_listing') }}" style="color:blue">Create Listing</a>
+{% endblock navigation %}
+
 {% block content %}
     <h1>About Page</h1>
+    <p>
+        seller = db.Column(db.String(100), nullable=False)<br />
+        date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)<br />
+        bedrooms = db.Column(db.String(100), nullable=False)<br />
+        bathrooms = db.Column(db.String(100), nullable=False)<br />
+        zipcode = db.Column(db.String(100), nullable=False)<br />
+        office = db.Column(db.String(100), nullable=False)<br />
+        agent_id = db.Column(db.Integer, db.ForeignKey('agent.id'), nullable=False)<br />
+    </p>
 {% endblock content %}

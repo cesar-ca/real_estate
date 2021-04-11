@@ -1,38 +1,27 @@
-from flask import render_template, url_for, flash, redirect
-from real_estate import app
+from flask import render_template, url_for, flash, redirect, request, abort
+from real_estate import app, db
+from real_estate.forms import ListingForm
 from real_estate.models import Agent, Listing
-
-
-listings = [
-    {
-        'seller': 'Emanuel Castro',
-        'bedrooms': 'Two',
-        'bathrooms': 'Two',
-        'price': '10000',
-        'zipcode': '94102',
-        'date': 'May 14, 2017',
-        'agent': 'Bucky Barnes',
-        'office': 'Tenderloin'
-    },
-    {
-        'seller': 'Norma Varela',
-        'bedrooms': 'Three',
-        'bathrooms': 'Four',
-        'price': '100500',
-        'zipcode': '94108',
-        'date': 'November 30, 2019',
-        'agent': 'Sam Wilson',
-        'office': 'Chinatown'
-    },
-    
-]
 
 
 @app.route("/")
 @app.route("/home")
 def home():
+    listings = Listing.query.all()
     return render_template('home.html', listings=listings)
 
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
+
+@app.route("/new_listing", methods=['GET', 'POST'])
+def new_listing():
+    form = ListingForm()
+    if form.validate_on_submit():
+        listing = Listing(seller=form.seller.data, bedrooms=form.bedrooms.data, bathrooms=form.bathrooms.data, zipcode=form.zipcode.data, office=form.office.data, agent_id=form.agent_id.data)
+        db.session.add(listing)
+        db.session.commit()
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_listing.html', title='New Listing', form=form)
+ 
